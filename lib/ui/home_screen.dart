@@ -38,7 +38,6 @@ class HomeScreen extends StatelessWidget {
                   decoration: InputDecoration(
                     border: outlineBorder,
                     focusedBorder: outlineBorder,
-                    // hintText: 'username',
                     labelText: 'username',
                     labelStyle: TextStyle(color: Colors.black),
                   ),
@@ -48,7 +47,6 @@ class HomeScreen extends StatelessWidget {
                   style: ButtonStyle(
                     backgroundColor: const MaterialStatePropertyAll(Colors.black),
                     minimumSize: MaterialStateProperty.all(const Size(double.maxFinite, 50)),
-                    
                   ),
                   onPressed: () { },
                   child: const Text(
