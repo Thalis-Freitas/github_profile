@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:github_profile/ui/results_screen.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -48,7 +50,9 @@ class HomeScreen extends StatelessWidget {
                     backgroundColor: const MaterialStatePropertyAll(Colors.black),
                     minimumSize: MaterialStateProperty.all(const Size(double.maxFinite, 50)),
                   ),
-                  onPressed: () { },
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const ResultsScreen()));
+                  },
                   child: const Text(
                     'Buscar',
                     style: TextStyle(fontSize: 16.0),
