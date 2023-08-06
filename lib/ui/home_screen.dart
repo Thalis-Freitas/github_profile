@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:github_profile/ui/results_screen.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  HomeScreen({super.key});
+
+  final TextEditingController _username = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +38,9 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               children: [
                 Container(height: 30.0),
-                const TextField(
-                  decoration: InputDecoration(
+                TextField(
+                  controller: _username,
+                  decoration: const InputDecoration(
                     border: outlineBorder,
                     focusedBorder: outlineBorder,
                     labelText: 'username',
@@ -51,7 +54,11 @@ class HomeScreen extends StatelessWidget {
                     minimumSize: MaterialStateProperty.all(const Size(double.maxFinite, 50)),
                   ),
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const ResultsScreen()));
+                    Navigator.push(
+                      context, MaterialPageRoute(
+                        builder: (context) => ResultsScreen(username: _username.value.text)
+                      ),
+                    );
                   },
                   child: const Text(
                     'Buscar',
