@@ -35,7 +35,10 @@ class ResultsScreen extends StatelessWidget {
         } else if (snapshot.hasData && snapshot.data is User) {
           return _buildUserDetails(snapshot.data as User);
         } else {
-          return Text(snapshot.data, style: const TextStyle(color: Colors.white),);
+          return Container(
+            padding: const EdgeInsets.all(40),
+            child: _buildStat("Resultado da busca", snapshot.data, Colors.red),
+          );
         }
       },
     );
@@ -71,14 +74,14 @@ class ResultsScreen extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        _buildStat("Seguidores", user.followers, Colors.purple),
+        _buildStat("Seguidores", "${user.followers}", Colors.purple),
         Container(width: 16),
-        _buildStat("Repositórios", user.publicRepos, Colors.deepOrange),
+        _buildStat("Repositórios", "${user.publicRepos}", Colors.deepOrange),
       ],
     );
   }
 
-  Widget _buildStat(String label, int value, Color color) {
+  Widget _buildStat(String label, String value, Color color) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
       decoration: BoxDecoration(
@@ -97,7 +100,7 @@ class ResultsScreen extends StatelessWidget {
     if (response.statusCode == 200) {
       return User.fromJson(json.decode(response.body));
     } else {
-      return "Usuário $username inválido ou não encontrado.";
+      return 'Usuário "$username" inválido ou não encontrado.';
     }
   }
 }
